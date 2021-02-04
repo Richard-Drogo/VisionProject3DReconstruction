@@ -1,12 +1,13 @@
-function I = muscles(I, seuilInf, seuilSup)
+function imagesIn3DArray = muscles(imagesIn3DArray, seuilInf, seuilSup)
     
-    [l c]=size(I);
-    for i=1:l
-        for j=1:c
-            if ( (I(i,j) > seuilInf) && (I(i,j)<seuilSup) )
-                I(i,j)=0;
-            else  
-                I(i,j)=1;
+    for slice = 1:size(imagesIn3DArray,3)
+        for i=1:size(imagesIn3DArray,1)
+            for j=1:size(imagesIn3DArray,2)
+                if ( (imagesIn3DArray(i,j,slice) > seuilInf) && (imagesIn3DArray(i,j,slice)<seuilSup) )
+                    imagesIn3DArray(i,j,slice)=0;
+                else  
+                    imagesIn3DArray(i,j,slice)=1;
+                end
             end
         end
     end

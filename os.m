@@ -1,12 +1,13 @@
-function I = os(I, seuil)
+function imagesIn3DArray = os(imagesIn3DArray, seuil)
     
-    [l c]=size(I);
-    for i=1:l
-        for j=1:c
-            if I(i,j)<seuil
-                I(i,j)=0;
-            else  
-                I(i,j)=1;
+    for slice = 1:size(imagesIn3DArray,3)
+        for i=1:size(imagesIn3DArray,1)
+            for j=1:size(imagesIn3DArray,2)
+                if imagesIn3DArray(i,j,slice) < seuil
+                    imagesIn3DArray(i,j,slice)=0;
+                else  
+                    imagesIn3DArray(i,j,slice)=1;
+                end
             end
         end
     end
